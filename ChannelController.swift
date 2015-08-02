@@ -23,6 +23,7 @@ class ChannelController: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        super.view.alpha = 0.8
     }
 
     override func didReceiveMemoryWarning() {

@@ -22,7 +22,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if (imageView != nil) {
             var blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
             var blurView = UIVisualEffectView(effect: blurEffect)
-            blurView.frame.size = CGSize(width: view.frame.width, height: view.frame.height)
+            blurView.frame.size = CGSize(width: super.view.frame.width, height: super.view.frame.height)
 
             imageView!.addSubview(blurView)
         }
@@ -41,11 +41,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.eHttp.delegate = self
         self.eHttp.onSearch("http://www.douban.com/j/app/radio/channels")
         self.eHttp.onSearch("http://douban.fm/j/mine/playlist?type=n&channel=0&from=mainsite")
+
+        // Clear the bg-color of songlist table
+        self.tblSongList.backgroundColor = UIColor.clearColor()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        var channelController: ChannelController = segue.destinationViewController as! ChannelController
+        channelController.delegate = self
+        channelController.channelData = self.channelData
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -54,6 +65,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = self.tblSongList.dequeueReusableCellWithIdentifier("songitem") as! UITableViewCell
+
+        // Clear the bg-color of every item in songlist table
+        cell.backgroundColor = UIColor.clearColor()
+
         let rowData:JSON = self.songData[indexPath.row]
         let title = (rowData["title"].string == nil) ? String("Unknown") : rowData["title"].string!
         let artist_album = ((rowData["artist"].string == nil) ? String("Unknown") : rowData["artist"].string!)
@@ -64,9 +79,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Show strings first
         cell.textLabel?.text = title
         cell.detailTextLabel?.text = artist_album
+        // Show default artwork
         cell.imageView?.image = UIImage(named: "detail")
 
-        // Show artwork later
+        // Show real artwork later
         Alamofire.manager.request(Method.GET, artwork_url).response { (_, _, data, error) -> Void in
             if (data != nil) {
                 let img = UIImage(data: data as! NSData)
@@ -75,6 +91,35 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
 
         return cell
+    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.onSelectRow(indexPath.row)
+    }
+
+    func onSelectRow(index: Int) {
+        let indexPath = NSIndexPath(forRow: index, inSection: 0)
+        self.tblSongList.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: UITableViewScrollPosition.Top)
+        let rowData: JSON = self.songData[index]
+        let imgUrl = rowData["picture"].string
+        self.onSetImage(imgUrl)
+    }
+
+    func onSetImage(url: String?) {
+        self.imageArtwork.onRotation()  /* Reset the rotation */
+
+        if (url != nil) {
+            Alamofire.manager.request(Method.GET, url!).response({ (_, _, data, error) -> Void in
+                if (data != nil) {
+                    let img = UIImage(data: data as! NSData )
+                    self.imageArtwork.image = img
+                    self.imageBg.image = img
+                } else {
+                    // TODO:
+                }
+            })
+        } else {
+            // TODO:
+        }
     }
 
     func didRecieveResults(results: AnyObject?) {
@@ -88,6 +133,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 self.songData = song
                 // Reload song list
                 self.tblSongList.reloadData()
+                self.onSelectRow(0)
             } else {
                 println("No valid data!")
             }
@@ -103,14 +149,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         } else {
             // TODO:
         }
-    }
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        var channelController: ChannelController = segue.destinationViewController as! ChannelController
-        channelController.delegate = self
-        channelController.channelData = self.channelData
     }
 }
 
