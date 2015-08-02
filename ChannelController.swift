@@ -8,9 +8,16 @@
 
 import UIKit
 
-class ChannelController: UIViewController {
+protocol ChannelProtocol {
+    func onChangeChannel(channel_id: String?)
+}
+
+class ChannelController: UIViewController, UITableViewDelegate {
 
     @IBOutlet weak var tblChannelList: UITableView!
+
+    var delegate: ChannelProtocol?
+    var channelData: [JSON] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,13 +31,22 @@ class ChannelController: UIViewController {
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        println("channelData: \(self.channelData.count)")
+        return self.channelData.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tblChannelList.dequeueReusableCellWithIdentifier("channelitem") as! UITableViewCell
-        cell.textLabel?.text = "ChannelName: \(indexPath.row)"
-        cell.imageView?.image = UIImage(named: "detail")
+        let rowData:JSON = self.channelData[indexPath.row]
+        cell.textLabel?.text = rowData["name"].string
         return cell
+    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let rowData:JSON = self.channelData[indexPath.row]
+        let channel_id = rowData["channel_id"].stringValue
+        self.delegate?.onChangeChannel(channel_id)
+
+        // Exit current viewcontroller
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 
     /*
