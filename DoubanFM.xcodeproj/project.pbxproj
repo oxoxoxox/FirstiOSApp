@@ -13,6 +13,7 @@
 		AA6099DF1B6DBA860068DBBF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA6099DE1B6DBA860068DBBF /* Images.xcassets */; };
 		AA6099E21B6DBA860068DBBF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA6099E01B6DBA860068DBBF /* LaunchScreen.xib */; };
 		AA6099EE1B6DBA870068DBBF /* DoubanFMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6099ED1B6DBA870068DBBF /* DoubanFMTests.swift */; };
+		AA6099F81B6DFA240068DBBF /* ImagePostEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6099F71B6DFA240068DBBF /* ImagePostEffect.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		AA6099E71B6DBA870068DBBF /* DoubanFMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoubanFMTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA6099EC1B6DBA870068DBBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA6099ED1B6DBA870068DBBF /* DoubanFMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubanFMTests.swift; sourceTree = "<group>"; };
+		AA6099F71B6DFA240068DBBF /* ImagePostEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePostEffect.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				AA6099D71B6DBA860068DBBF /* AppDelegate.swift */,
 				AA6099D91B6DBA860068DBBF /* ViewController.swift */,
 				AA6099DB1B6DBA860068DBBF /* Main.storyboard */,
+				AA6099F71B6DFA240068DBBF /* ImagePostEffect.swift */,
 				AA6099DE1B6DBA860068DBBF /* Images.xcassets */,
 				AA6099E01B6DBA860068DBBF /* LaunchScreen.xib */,
 				AA6099D51B6DBA860068DBBF /* Supporting Files */,
@@ -213,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA6099DA1B6DBA860068DBBF /* ViewController.swift in Sources */,
+				AA6099F81B6DFA240068DBBF /* ImagePostEffect.swift in Sources */,
 				AA6099D81B6DBA860068DBBF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,6 +413,7 @@
 				AA6099F31B6DBA870068DBBF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AA6099F41B6DBA870068DBBF /* Build configuration list for PBXNativeTarget "DoubanFMTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +422,7 @@
 				AA6099F61B6DBA870068DBBF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
