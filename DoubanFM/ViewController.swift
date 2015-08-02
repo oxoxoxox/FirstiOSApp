@@ -8,11 +8,15 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, HttpProtocal {
 
     @IBOutlet weak var imageArtwork: ImagePostEffect!
     @IBOutlet weak var imageBg: UIImageView!
     @IBOutlet weak var tblSongList: UITableView!
+
+    var eHttp = HTTPController()
+    var channelData: [JSON] = []
+    var songData: [JSON] = []
 
     func onBlurEffect(imageView: UIImageView?) {
         if (imageView != nil) {
@@ -33,6 +37,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
         tblSongList.dataSource = self
         tblSongList.delegate = self
+
+        eHttp.delegate = self
+        eHttp.onSearch("http://www.douban.com/j/app/radio/channels")
+        eHttp.onSearch("http://douban.fm/j/mine/playlist?type=n&channel=0&from=mainsite")
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,14 +49,51 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 9
+        println("songData.count: \(self.songData.count)")
+        return self.songData.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tblSongList.dequeueReusableCellWithIdentifier("songitem") as! UITableViewCell
-        cell.textLabel?.text = "Title: \(indexPath.row)"
-        cell.detailTextLabel?.text = "Detail: \(indexPath.row)"
-        cell.imageView?.image = UIImage(named: "detail")
+
+        var rowData:JSON = self.songData[indexPath.row]
+        var title = (rowData["title"].string == nil) ? String("Unknown") : rowData["title"].string!
+        var artist_album = ((rowData["artist"].string == nil) ? String("Unknown") : rowData["artist"].string!)
+                        + String(" - ")
+                        + ((rowData["albumtitle"].string == nil) ? String("Unknown") : rowData["albumtitle"].string!)
+        var artwork_url = (rowData["picture"].string == nil) ? String("http://douban.fm/favicon.ico") : rowData["picture"].string!
+
+        // Show strings first
+        cell.textLabel?.text = title
+        cell.detailTextLabel?.text = artist_album
+
+        // Show artwork later
+        Alamofire.manager.request(Method.GET, artwork_url).response { (_, _, data, error) -> Void in
+            if (data != nil) {
+                var img = UIImage(data: data as! NSData)
+                cell.imageView?.image = img
+            }
+        }
+
         return cell
+    }
+
+    func didRecieveResults(results: AnyObject?) {
+//        println("RecieveResults:\(results)")
+        if (results != nil) {
+            var json = JSON(results!)
+
+            if let channels = json["channels"].array {
+                self.channelData = channels
+            } else if let song = json["song"].array {
+                self.songData = song
+                // Reload song list
+                self.tblSongList.reloadData()
+            } else {
+                println("No valid data!")
+            }
+        } else {
+            println("Results is nil!")
+        }
     }
 }
 

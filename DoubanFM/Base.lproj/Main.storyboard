@@ -110,11 +110,11 @@
                                     <segue destination="flQ-Bz-GTb" kind="presentation" modalPresentationStyle="overCurrentContext" id="aPr-b4-a8e"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="32" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="LgD-ce-KOP" userLabel="SongList">
+                            <tableView clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="36" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="LgD-ce-KOP" userLabel="SongList">
                                 <rect key="frame" x="0.0" y="290" width="320" height="278"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" selectionStyle="default" indentationWidth="10" reuseIdentifier="songitem" textLabel="rER-Jc-i1Q" detailTextLabel="FE5-uK-7C9" style="IBUITableViewCellStyleSubtitle" id="Rgr-Ua-xh9">
+                                    <tableViewCell contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" selectionStyle="default" indentationWidth="10" reuseIdentifier="songitem" textLabel="rER-Jc-i1Q" detailTextLabel="FE5-uK-7C9" rowHeight="36" style="IBUITableViewCellStyleSubtitle" id="Rgr-Ua-xh9">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rgr-Ua-xh9" id="yxw-n7-6Vq">

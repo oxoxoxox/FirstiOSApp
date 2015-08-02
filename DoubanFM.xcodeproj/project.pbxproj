@@ -15,6 +15,9 @@
 		AA6099EE1B6DBA870068DBBF /* DoubanFMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6099ED1B6DBA870068DBBF /* DoubanFMTests.swift */; };
 		AA6099F81B6DFA240068DBBF /* ImagePostEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6099F71B6DFA240068DBBF /* ImagePostEffect.swift */; };
 		AA6099FC1B6E0FF10068DBBF /* ChannelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6099FB1B6E0FF10068DBBF /* ChannelController.swift */; };
+		AA609A031B6E136E0068DBBF /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA609A011B6E136E0068DBBF /* Alamofire.swift */; };
+		AA609A041B6E136E0068DBBF /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA609A021B6E136E0068DBBF /* SwiftyJSON.swift */; };
+		AA609A081B6E13E00068DBBF /* HTTPController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA609A071B6E13E00068DBBF /* HTTPController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,9 @@
 		AA6099ED1B6DBA870068DBBF /* DoubanFMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubanFMTests.swift; sourceTree = "<group>"; };
 		AA6099F71B6DFA240068DBBF /* ImagePostEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePostEffect.swift; sourceTree = "<group>"; };
 		AA6099FB1B6E0FF10068DBBF /* ChannelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChannelController.swift; path = ../ChannelController.swift; sourceTree = "<group>"; };
+		AA609A011B6E136E0068DBBF /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
+		AA609A021B6E136E0068DBBF /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		AA609A071B6E13E00068DBBF /* HTTPController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPController.swift; path = ../HTTPController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,9 +89,12 @@
 			children = (
 				AA6099D71B6DBA860068DBBF /* AppDelegate.swift */,
 				AA6099FB1B6E0FF10068DBBF /* ChannelController.swift */,
+				AA609A071B6E13E00068DBBF /* HTTPController.swift */,
 				AA6099F71B6DFA240068DBBF /* ImagePostEffect.swift */,
 				AA6099D91B6DBA860068DBBF /* ViewController.swift */,
 				AA6099DB1B6DBA860068DBBF /* Main.storyboard */,
+				AA609A011B6E136E0068DBBF /* Alamofire.swift */,
+				AA609A021B6E136E0068DBBF /* SwiftyJSON.swift */,
 				AA6099DE1B6DBA860068DBBF /* Images.xcassets */,
 				AA6099E01B6DBA860068DBBF /* LaunchScreen.xib */,
 				AA6099D51B6DBA860068DBBF /* Supporting Files */,
@@ -219,7 +228,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA6099DA1B6DBA860068DBBF /* ViewController.swift in Sources */,
+				AA609A081B6E13E00068DBBF /* HTTPController.swift in Sources */,
+				AA609A031B6E136E0068DBBF /* Alamofire.swift in Sources */,
 				AA6099F81B6DFA240068DBBF /* ImagePostEffect.swift in Sources */,
+				AA609A041B6E136E0068DBBF /* SwiftyJSON.swift in Sources */,
 				AA6099D81B6DBA860068DBBF /* AppDelegate.swift in Sources */,
 				AA6099FC1B6E0FF10068DBBF /* ChannelController.swift in Sources */,
 			);
