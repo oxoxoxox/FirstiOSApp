@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="hTU-Hf-dVh" userLabel="bg_app">
-                                <rect key="frame" x="0.0" y="-53" width="320" height="621"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="1zK-h4-jBK" userLabel="bg_artwork" customClass="ImagePostEffect" customModule="DoubanFM" customModuleProvider="target">
                                 <rect key="frame" x="60" y="30" width="200" height="200"/>
@@ -110,11 +110,11 @@
                                     <segue destination="flQ-Bz-GTb" kind="presentation" modalPresentationStyle="overCurrentContext" id="aPr-b4-a8e"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="32" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="LgD-ce-KOP" userLabel="SongList">
+                            <tableView clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="32" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="LgD-ce-KOP" userLabel="SongList">
                                 <rect key="frame" x="0.0" y="290" width="320" height="278"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="rER-Jc-i1Q" detailTextLabel="FE5-uK-7C9" style="IBUITableViewCellStyleSubtitle" id="Rgr-Ua-xh9">
+                                    <tableViewCell contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" selectionStyle="default" indentationWidth="10" reuseIdentifier="songitem" textLabel="rER-Jc-i1Q" detailTextLabel="FE5-uK-7C9" style="IBUITableViewCellStyleSubtitle" id="Rgr-Ua-xh9">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rgr-Ua-xh9" id="yxw-n7-6Vq">
@@ -160,7 +160,7 @@
                             <constraint firstItem="1zK-h4-jBK" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="10" id="fL1-TL-HeE"/>
                             <constraint firstItem="FSc-6S-usJ" firstAttribute="centerY" secondItem="VYi-SY-Eri" secondAttribute="centerY" id="ggP-Jr-oK0"/>
                             <constraint firstItem="44N-bg-0qt" firstAttribute="leading" secondItem="Slp-zQ-jaY" secondAttribute="trailing" constant="80" id="i5O-Wb-Z57"/>
-                            <constraint firstItem="hTU-Hf-dVh" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-73" id="kRe-5o-sPw"/>
+                            <constraint firstItem="hTU-Hf-dVh" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-20" id="kRe-5o-sPw"/>
                             <constraint firstItem="1zK-h4-jBK" firstAttribute="centerY" secondItem="kk8-CF-t9E" secondAttribute="centerY" id="pVi-A9-zHi"/>
                             <constraint firstItem="9Br-vF-Bst" firstAttribute="leading" secondItem="Slp-zQ-jaY" secondAttribute="trailing" constant="30" id="qAm-1N-GQN"/>
                             <constraint firstItem="FSc-6S-usJ" firstAttribute="centerY" secondItem="Slp-zQ-jaY" secondAttribute="centerY" id="qKn-pY-Owd"/>
@@ -170,7 +170,6 @@
                             <constraint firstAttribute="trailingMargin" secondItem="FSc-6S-usJ" secondAttribute="trailing" constant="-16" id="y1x-vG-Ps1"/>
                         </constraints>
                     </view>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="imageArtwork" destination="1zK-h4-jBK" id="JUd-po-Jtn"/>
@@ -180,11 +179,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="478" y="389"/>
         </scene>
-        <!--View Controller-->
+        <!--Channel Controller-->
         <scene sceneID="NS5-Ge-gaf">
             <objects>
-                <viewController id="flQ-Bz-GTb" sceneMemberID="viewController">
+                <viewController id="flQ-Bz-GTb" customClass="ChannelController" customModule="DoubanFM" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="C1k-vz-jQc"/>
                         <viewControllerLayoutGuide type="bottom" id="0C7-AG-ZaF"/>
@@ -194,23 +194,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择频道" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NMp-6F-EF6">
-                                <rect key="frame" x="0.0" y="20" width="320" height="21"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="gim-pA-fhy">
-                                <rect key="frame" x="0.0" y="49" width="320" height="519"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="36" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="gim-pA-fhy">
+                                <rect key="frame" x="0.0" y="48" width="320" height="519.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="To8-2I-ddC">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="channelitem" id="Lu0-eX-aGu">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="To8-2I-ddC" id="yYM-wU-Dip">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lu0-eX-aGu" id="LBi-QA-Vl5">
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="flQ-Bz-GTb" id="g8Y-a7-KWh"/>
+                                    <outlet property="delegate" destination="flQ-Bz-GTb" id="JcG-cX-AGh"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -226,6 +230,9 @@
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="tblChannelList" destination="gim-pA-fhy" id="0Zl-Ax-4lT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pXa-vw-clE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

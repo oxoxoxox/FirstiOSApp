@@ -14,6 +14,7 @@
 		AA6099E21B6DBA860068DBBF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA6099E01B6DBA860068DBBF /* LaunchScreen.xib */; };
 		AA6099EE1B6DBA870068DBBF /* DoubanFMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6099ED1B6DBA870068DBBF /* DoubanFMTests.swift */; };
 		AA6099F81B6DFA240068DBBF /* ImagePostEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6099F71B6DFA240068DBBF /* ImagePostEffect.swift */; };
+		AA6099FC1B6E0FF10068DBBF /* ChannelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6099FB1B6E0FF10068DBBF /* ChannelController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		AA6099EC1B6DBA870068DBBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA6099ED1B6DBA870068DBBF /* DoubanFMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubanFMTests.swift; sourceTree = "<group>"; };
 		AA6099F71B6DFA240068DBBF /* ImagePostEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePostEffect.swift; sourceTree = "<group>"; };
+		AA6099FB1B6E0FF10068DBBF /* ChannelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChannelController.swift; path = ../ChannelController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,9 +82,10 @@
 			isa = PBXGroup;
 			children = (
 				AA6099D71B6DBA860068DBBF /* AppDelegate.swift */,
+				AA6099FB1B6E0FF10068DBBF /* ChannelController.swift */,
+				AA6099F71B6DFA240068DBBF /* ImagePostEffect.swift */,
 				AA6099D91B6DBA860068DBBF /* ViewController.swift */,
 				AA6099DB1B6DBA860068DBBF /* Main.storyboard */,
-				AA6099F71B6DFA240068DBBF /* ImagePostEffect.swift */,
 				AA6099DE1B6DBA860068DBBF /* Images.xcassets */,
 				AA6099E01B6DBA860068DBBF /* LaunchScreen.xib */,
 				AA6099D51B6DBA860068DBBF /* Supporting Files */,
@@ -218,6 +221,7 @@
 				AA6099DA1B6DBA860068DBBF /* ViewController.swift in Sources */,
 				AA6099F81B6DFA240068DBBF /* ImagePostEffect.swift in Sources */,
 				AA6099D81B6DBA860068DBBF /* AppDelegate.swift in Sources */,
+				AA6099FC1B6E0FF10068DBBF /* ChannelController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
