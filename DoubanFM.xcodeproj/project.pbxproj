@@ -18,6 +18,9 @@
 		AA609A031B6E136E0068DBBF /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA609A011B6E136E0068DBBF /* Alamofire.swift */; };
 		AA609A041B6E136E0068DBBF /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA609A021B6E136E0068DBBF /* SwiftyJSON.swift */; };
 		AA609A081B6E13E00068DBBF /* HTTPController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA609A071B6E13E00068DBBF /* HTTPController.swift */; };
+		AAB7A5801B6E69F400592124 /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB7A57F1B6E69F400592124 /* PlayButton.swift */; };
+		AAB7A5821B6E752000592124 /* HRToast+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB7A5811B6E752000592124 /* HRToast+UIView.swift */; };
+		AAB7A5861B6E75D600592124 /* RepeatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB7A5851B6E75D600592124 /* RepeatButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +49,9 @@
 		AA609A011B6E136E0068DBBF /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
 		AA609A021B6E136E0068DBBF /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		AA609A071B6E13E00068DBBF /* HTTPController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPController.swift; path = ../HTTPController.swift; sourceTree = "<group>"; };
+		AAB7A57F1B6E69F400592124 /* PlayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayButton.swift; sourceTree = "<group>"; };
+		AAB7A5811B6E752000592124 /* HRToast+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HRToast+UIView.swift"; sourceTree = "<group>"; };
+		AAB7A5851B6E75D600592124 /* RepeatButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepeatButton.swift; path = ../RepeatButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,12 +95,15 @@
 			children = (
 				AA6099D71B6DBA860068DBBF /* AppDelegate.swift */,
 				AA6099FB1B6E0FF10068DBBF /* ChannelController.swift */,
+				AAB7A5851B6E75D600592124 /* RepeatButton.swift */,
+				AAB7A57F1B6E69F400592124 /* PlayButton.swift */,
 				AA609A071B6E13E00068DBBF /* HTTPController.swift */,
 				AA6099F71B6DFA240068DBBF /* ImagePostEffect.swift */,
 				AA6099D91B6DBA860068DBBF /* ViewController.swift */,
 				AA6099DB1B6DBA860068DBBF /* Main.storyboard */,
 				AA609A011B6E136E0068DBBF /* Alamofire.swift */,
 				AA609A021B6E136E0068DBBF /* SwiftyJSON.swift */,
+				AAB7A5811B6E752000592124 /* HRToast+UIView.swift */,
 				AA6099DE1B6DBA860068DBBF /* Images.xcassets */,
 				AA6099E01B6DBA860068DBBF /* LaunchScreen.xib */,
 				AA6099D51B6DBA860068DBBF /* Supporting Files */,
@@ -231,7 +240,10 @@
 				AA609A081B6E13E00068DBBF /* HTTPController.swift in Sources */,
 				AA609A031B6E136E0068DBBF /* Alamofire.swift in Sources */,
 				AA6099F81B6DFA240068DBBF /* ImagePostEffect.swift in Sources */,
+				AAB7A5861B6E75D600592124 /* RepeatButton.swift in Sources */,
 				AA609A041B6E136E0068DBBF /* SwiftyJSON.swift in Sources */,
+				AAB7A5821B6E752000592124 /* HRToast+UIView.swift in Sources */,
+				AAB7A5801B6E69F400592124 /* PlayButton.swift in Sources */,
 				AA6099D81B6DBA860068DBBF /* AppDelegate.swift in Sources */,
 				AA6099FC1B6E0FF10068DBBF /* ChannelController.swift in Sources */,
 			);

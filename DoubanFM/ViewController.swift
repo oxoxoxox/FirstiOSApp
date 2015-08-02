@@ -7,18 +7,33 @@
 //
 
 import UIKit
+import MediaPlayer
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, HttpProtocal, ChannelProtocol {
 
     @IBOutlet weak var imageArtwork: ImagePostEffect!
     @IBOutlet weak var imageBg: UIImageView!
     @IBOutlet weak var tblSongList: UITableView!
+    @IBOutlet weak var progressTime: UILabel!
+    @IBOutlet weak var progressBar: UIImageView!
+
+    @IBOutlet weak var btnRepeatMode: RepeatButton!
+    @IBOutlet weak var btnPlayPause: PlayButton!
+    @IBOutlet weak var btnPrevious: UIButton!
+    @IBOutlet weak var btnNext: UIButton!
 
     var eHttp = HTTPController()
     var channelData: [JSON] = []
     var songData: [JSON] = []
 
     var imageCache = Dictionary<String,UIImage>()
+
+    var playingIndex: Int = 0
+    var isAutoFinishPlay: Bool = true
+
+    var audioPlayer: MPMoviePlayerController = MPMoviePlayerController()
+    var progressTimer: NSTimer?
+
 
     func onBlurEffect(imageView: UIImageView?) {
         if (imageView != nil) {
@@ -34,6 +49,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
+        self.progressBar.frame.size.width = CGFloat(0)
+        self.progressBar.hidden = true
+
         self.imageArtwork.onRotation()
         self.onBlurEffect(imageBg)
 
@@ -46,6 +64,91 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
         // Clear the bg-color of songlist table
         self.tblSongList.backgroundColor = UIColor.clearColor()
+
+        self.btnPlayPause.addTarget(self, action: "onPayPause:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.btnRepeatMode.addTarget(self, action: "onRepeatMode:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.btnPrevious.addTarget(self, action: "onPreviousNext:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.btnNext.addTarget(self, action: "onPreviousNext:", forControlEvents: UIControlEvents.TouchUpInside)
+
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: "onEos",
+            name: MPMoviePlayerPlaybackDidFinishNotification,
+            object: self.audioPlayer)
+    }
+
+    func onPayPause(btn: PlayButton) {
+        if (btn.isPlaying) {
+            self.audioPlayer.play()
+        } else {
+            self.audioPlayer.pause()
+        }
+    }
+    func onPreviousNext(btn: UIButton) {
+        self.isAutoFinishPlay = false
+
+        switch (self.btnRepeatMode.repeatMode) {
+        case 1:
+            var newindex = 0
+            let count = self.songData.count
+            if (count > 1) {
+                do {
+                    newindex = random() % count
+                } while (newindex == self.playingIndex)
+            }
+            self.playingIndex = newindex
+            self.onSelectRow(self.playingIndex)
+        case 2:
+            let count = self.songData.count
+            if (btn == self.btnPrevious) {
+                self.playingIndex = (self.playingIndex + count - 1) % count
+            } else {
+                self.playingIndex = (self.playingIndex + 1) % count
+            }
+            self.onSelectRow(self.playingIndex)
+        default:
+            // Nothing to do
+            usleep(1)
+        }
+    }
+    func onRepeatMode(btn: RepeatButton) {
+        var msg = ""
+        switch (btn.repeatMode) {
+        case 1:
+            msg = "随机播放"
+        case 2:
+            msg = "顺序播放"
+        default:
+            msg = "逗我呢！"
+        }
+        self.view.makeToast(message: msg, duration: 0.5, position: "center")
+    }
+    func onEos() {
+        if (self.isAutoFinishPlay) {
+            switch (self.btnRepeatMode.repeatMode) {
+            case 1:
+                var newindex = 0
+                let count = self.songData.count
+                if (count > 1) {
+                    do {
+                        newindex = random() % count
+                    } while (newindex == self.playingIndex)
+                }
+                self.playingIndex = newindex
+                self.onSelectRow(self.playingIndex)
+            case 2:
+                self.playingIndex++
+                if (self.playingIndex >= self.songData.count) {
+                    self.playingIndex = 0
+                }
+                self.onSelectRow(self.playingIndex)
+            default:
+                // Nothing to do
+                usleep(1)
+            }
+        } else {
+            self.isAutoFinishPlay = true
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -76,7 +179,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let artist_album = ((rowData["artist"].string == nil) ? String("Unknown") : rowData["artist"].string!)
                         + String(" - ")
                         + ((rowData["albumtitle"].string == nil) ? String("Unknown") : rowData["albumtitle"].string!)
-        let artwork_url = (rowData["picture"].string == nil) ? String("http://douban.fm/favicon.ico") : rowData["picture"].string!
+        let artwork_url = (rowData["picture"].string == nil) ?
+                                String("http://douban.fm/favicon.ico") :
+                                rowData["picture"].string!
 
         // Show strings first
         cell.textLabel?.text = title
@@ -92,6 +197,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.isAutoFinishPlay = false
+        self.playingIndex = indexPath.row
         self.onSelectRow(indexPath.row)
     }
 
@@ -100,7 +207,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.tblSongList.selectRowAtIndexPath(indexPath, animated: false, scrollPosition: UITableViewScrollPosition.Top)
         let rowData: JSON = self.songData[index]
         let imgUrl = rowData["picture"].string
+        let audioUrl = rowData["url"].string
+
+        self.progressBar.frame.size.width = CGFloat(0)
+        self.progressBar.hidden = true
         self.onSetImage(imgUrl)
+        self.onSetAudio(audioUrl)
     }
 
     func onSetImage(url: String?) {
@@ -114,12 +226,70 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
 
+    func onSetAudio(url: String?) {
+        self.audioPlayer.stop()
+        self.progressTimer?.invalidate()
+        self.progressTime.text = "00:00"
+
+        if (url != nil) {
+            self.audioPlayer.contentURL = NSURL(string: url!)
+            self.audioPlayer.play()
+            self.btnPlayPause.onPlay()
+            self.progressTimer = NSTimer.scheduledTimerWithTimeInterval(
+                                            0.3,
+                                            target: self,
+                                            selector: "onUpdateProgress",
+                                            userInfo: nil,
+                                            repeats: true)
+
+            self.isAutoFinishPlay = true
+        } else {
+            // TODO:
+        }
+    }
+
+    func onUpdateProgress() {
+        let ftime = self.audioPlayer.currentPlaybackTime
+        if (ftime > 0) {
+            let time = Int(ftime)
+            let minutes = time / 60
+            let seconds = time % 60
+            if (minutes <= 99) {
+                if (minutes > 9 && seconds > 9) {
+                    self.progressTime.text = "\(minutes):\(seconds)"
+                } else if (minutes > 9) {
+                    self.progressTime.text = "\(minutes):0\(seconds)"
+                } else if (seconds > 9) {
+                    self.progressTime.text = "0\(minutes):\(seconds)"
+                } else {
+                    self.progressTime.text = "0\(minutes):0\(seconds)"
+                }
+            } else {
+                self.progressTime.text = "99:59"
+            }
+
+            let fduration = self.audioPlayer.duration
+            if (fduration > 0) {
+                self.progressBar.frame.size.width = super.view.frame.size.width * CGFloat(ftime/fduration)
+                if (self.progressBar.hidden) {
+                    self.progressBar.hidden = false
+                }
+            } else {
+                self.progressBar.frame.size.width = CGFloat(0)
+                self.progressBar.hidden = true
+            }
+        } else {
+            self.progressBar.frame.size.width = CGFloat(0)
+            self.progressBar.hidden = true
+        }
+    }
+
     func onGetCacheImage(url: String, imgView: UIImageView) {
         let img: UIImage? = self.imageCache[url]
         if (img == nil) {
+            println("\(__FUNCTION__): image isn't cached, get it now!")
             Alamofire.manager.request(Method.GET, url).response({ (_, _, data, error) -> Void in
                 if (data != nil) {
-                    println("\(__FUNCTION__): image is cached")
                     let new_img = UIImage(data: data as! NSData )
                     imgView.image = new_img
 
@@ -130,6 +300,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 }
             })
         } else {
+            println("\(__FUNCTION__): image is cached~")
             imgView.image = img
         }
     }
@@ -145,6 +316,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 self.songData = song
                 // Reload song list
                 self.tblSongList.reloadData()
+                self.isAutoFinishPlay = false
                 self.onSelectRow(0)
             } else {
                 println("No valid data!")

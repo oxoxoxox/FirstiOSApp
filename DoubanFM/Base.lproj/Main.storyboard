@@ -51,13 +51,25 @@
                                     <constraint firstAttribute="height" constant="40" id="888-TM-ezn"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="bg_black" translatesAutoresizingMaskIntoConstraints="NO" id="4fm-Q8-2Cc" userLabel="bg_progress_current">
-                                <rect key="frame" x="0.0" y="250" width="10" height="36"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xhY-9Q-5GW">
+                                <rect key="frame" x="0.0" y="248" width="320" height="40"/>
+                                <subviews>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_black" translatesAutoresizingMaskIntoConstraints="NO" id="4fm-Q8-2Cc" userLabel="bg_progress_current">
+                                        <rect key="frame" x="0.0" y="2" width="10" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="KCa-Ev-DHd"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="KCa-Ev-DHd"/>
+                                    <constraint firstAttribute="height" constant="40" id="9UB-yd-ZcL"/>
+                                    <constraint firstItem="4fm-Q8-2Cc" firstAttribute="leading" secondItem="xhY-9Q-5GW" secondAttribute="leading" id="bLs-Oo-h5a"/>
+                                    <constraint firstItem="4fm-Q8-2Cc" firstAttribute="top" secondItem="xhY-9Q-5GW" secondAttribute="top" constant="2" id="sOR-ui-AHU"/>
+                                    <constraint firstAttribute="trailing" secondItem="4fm-Q8-2Cc" secondAttribute="trailing" constant="310" id="tRb-Si-3FR"/>
                                 </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qWe-2M-aef" userLabel="BtnRepeatMode">
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qWe-2M-aef" userLabel="BtnRepeatMode" customClass="RepeatButton" customModule="DoubanFM" customModuleProvider="target">
                                 <rect key="frame" x="40" y="255" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="2Sb-DC-w2M"/>
@@ -77,7 +89,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Slp-zQ-jaY" userLabel="BtnPlayPause">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Slp-zQ-jaY" userLabel="BtnPlayPause" customClass="PlayButton" customModule="DoubanFM" customModuleProvider="target">
                                 <rect key="frame" x="145" y="252" width="31" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="31" id="Pud-Ek-lwW"/>
@@ -144,6 +156,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="9Br-vF-Bst" firstAttribute="centerY" secondItem="FSc-6S-usJ" secondAttribute="centerY" id="0JD-Rx-AqW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xhY-9Q-5GW" secondAttribute="trailing" constant="-16" id="1eD-rW-X0A"/>
+                            <constraint firstItem="xhY-9Q-5GW" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="228" id="3Lp-aT-1HS"/>
                             <constraint firstItem="kk8-CF-t9E" firstAttribute="centerX" secondItem="Wbm-wA-zVw" secondAttribute="centerX" id="3c1-wC-GWs"/>
                             <constraint firstItem="LgD-ce-KOP" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="270" id="6fl-n4-UCK"/>
                             <constraint firstItem="FSc-6S-usJ" firstAttribute="centerX" secondItem="Slp-zQ-jaY" secondAttribute="centerX" id="87T-R9-dm4"/>
@@ -159,12 +173,12 @@
                             <constraint firstItem="1zK-h4-jBK" firstAttribute="centerX" secondItem="hTU-Hf-dVh" secondAttribute="centerX" id="XUx-q7-rgG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hTU-Hf-dVh" secondAttribute="trailing" constant="-16" id="a09-aP-8YL"/>
                             <constraint firstItem="LgD-ce-KOP" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="dwJ-hP-3QX"/>
-                            <constraint firstItem="FSc-6S-usJ" firstAttribute="centerY" secondItem="4fm-Q8-2Cc" secondAttribute="centerY" id="eaI-Vy-NXS"/>
                             <constraint firstItem="1zK-h4-jBK" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="10" id="fL1-TL-HeE"/>
                             <constraint firstItem="FSc-6S-usJ" firstAttribute="centerY" secondItem="VYi-SY-Eri" secondAttribute="centerY" id="ggP-Jr-oK0"/>
                             <constraint firstItem="44N-bg-0qt" firstAttribute="leading" secondItem="Slp-zQ-jaY" secondAttribute="trailing" constant="80" id="i5O-Wb-Z57"/>
                             <constraint firstItem="hTU-Hf-dVh" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-20" id="kRe-5o-sPw"/>
                             <constraint firstItem="1zK-h4-jBK" firstAttribute="centerY" secondItem="kk8-CF-t9E" secondAttribute="centerY" id="pVi-A9-zHi"/>
+                            <constraint firstItem="xhY-9Q-5GW" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="pq9-G4-nlv"/>
                             <constraint firstItem="9Br-vF-Bst" firstAttribute="leading" secondItem="Slp-zQ-jaY" secondAttribute="trailing" constant="30" id="qAm-1N-GQN"/>
                             <constraint firstItem="FSc-6S-usJ" firstAttribute="centerY" secondItem="Slp-zQ-jaY" secondAttribute="centerY" id="qKn-pY-Owd"/>
                             <constraint firstItem="FSc-6S-usJ" firstAttribute="centerY" secondItem="qWe-2M-aef" secondAttribute="centerY" id="s8C-xp-Pcf"/>
@@ -175,8 +189,14 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="btnNext" destination="9Br-vF-Bst" id="mdP-uS-IRX"/>
+                        <outlet property="btnPlayPause" destination="Slp-zQ-jaY" id="pIz-A8-lAr"/>
+                        <outlet property="btnPrevious" destination="VYi-SY-Eri" id="59R-r4-gUo"/>
+                        <outlet property="btnRepeatMode" destination="qWe-2M-aef" id="679-AT-4Gu"/>
                         <outlet property="imageArtwork" destination="1zK-h4-jBK" id="JUd-po-Jtn"/>
                         <outlet property="imageBg" destination="hTU-Hf-dVh" id="Fqv-2a-frK"/>
+                        <outlet property="progressBar" destination="4fm-Q8-2Cc" id="aT2-JK-Rdm"/>
+                        <outlet property="progressTime" destination="Wbm-wA-zVw" id="R3J-cJ-gJN"/>
                         <outlet property="tblSongList" destination="LgD-ce-KOP" id="55W-TO-1hH"/>
                     </connections>
                 </viewController>
