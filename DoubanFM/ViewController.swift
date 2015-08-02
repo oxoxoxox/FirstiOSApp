@@ -18,6 +18,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var channelData: [JSON] = []
     var songData: [JSON] = []
 
+    var imageCache = Dictionary<String,UIImage>()
+
     func onBlurEffect(imageView: UIImageView?) {
         if (imageView != nil) {
             var blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
@@ -83,11 +85,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.imageView?.image = UIImage(named: "detail")
 
         // Show real artwork later
-        Alamofire.manager.request(Method.GET, artwork_url).response { (_, _, data, error) -> Void in
-            if (data != nil) {
-                let img = UIImage(data: data as! NSData)
-                cell.imageView?.image = img
-            }
+        if (cell.imageView != nil) {
+            self.onGetCacheImage(artwork_url, imgView: cell.imageView!)
         }
 
         return cell
@@ -108,17 +107,30 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.imageArtwork.onRotation()  /* Reset the rotation */
 
         if (url != nil) {
-            Alamofire.manager.request(Method.GET, url!).response({ (_, _, data, error) -> Void in
+            self.onGetCacheImage(url!, imgView: self.imageArtwork)
+            self.onGetCacheImage(url!, imgView: self.imageBg)
+        } else {
+            // TODO:
+        }
+    }
+
+    func onGetCacheImage(url: String, imgView: UIImageView) {
+        let img: UIImage? = self.imageCache[url]
+        if (img == nil) {
+            Alamofire.manager.request(Method.GET, url).response({ (_, _, data, error) -> Void in
                 if (data != nil) {
-                    let img = UIImage(data: data as! NSData )
-                    self.imageArtwork.image = img
-                    self.imageBg.image = img
+                    println("\(__FUNCTION__): image is cached")
+                    let new_img = UIImage(data: data as! NSData )
+                    imgView.image = new_img
+
+                    // Cache this image data
+                    self.imageCache[url] = new_img
                 } else {
                     // TODO:
                 }
             })
         } else {
-            // TODO:
+            imgView.image = img
         }
     }
 
