@@ -19,7 +19,7 @@ class ImagePostEffect: UIImageView {
         self.layer.borderColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.7).CGColor
     }
 
-    func onRotation() {
+    func onRestartRotation() {
         let animation = CABasicAnimation(keyPath: "transform.rotation")
 
         animation.fromValue = 0.0
@@ -28,5 +28,13 @@ class ImagePostEffect: UIImageView {
         animation.repeatCount = 1000000
 
         self.layer.addAnimation(animation, forKey: nil)
+    }
+
+    func onPauseRotation() {
+        // TODO:
+    }
+
+    func onResumeRotation() {
+        // TODO:
     }
 }

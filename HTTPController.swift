@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import Alamofire
 
 class HTTPController: NSObject {
     var delegate: HttpProtocal?

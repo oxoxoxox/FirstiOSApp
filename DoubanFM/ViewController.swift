@@ -8,7 +8,6 @@
 
 import UIKit
 import MediaPlayer
-//import Alamofire
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, HttpProtocal, ChannelProtocol {
 
@@ -46,6 +45,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
 
+    func deviceOrientChanged(sender: NSNotification?) {
+        let device = UIDevice.currentDevice()
+        print("device.orientation:\(device.orientation.rawValue)");
+        switch (device.orientation) {
+        case .Portrait:
+            break
+        case .PortraitUpsideDown:
+            break
+        case .LandscapeLeft:
+            break
+        case .LandscapeRight:
+            break
+        default:
+            break
+        }
+
+        self.onBlurEffect(imageBg)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -53,7 +71,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.progressBar.frame.size.width = CGFloat(0)
         self.progressBar.hidden = true
 
-        self.imageArtwork.onRotation()
+        self.imageArtwork.onRestartRotation()
         self.onBlurEffect(imageBg)
 
         self.tblSongList.dataSource = self
@@ -78,11 +96,30 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             object: self.audioPlayer)
     }
 
+    override func viewWillAppear(animated: Bool) {
+        print("\(__FUNCTION__)")
+        UIDevice.currentDevice().beginGeneratingDeviceOrientationNotifications()
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: "deviceOrientChanged:",
+            name: UIDeviceOrientationDidChangeNotification,
+            object: nil)
+    }
+
+    override func viewWillDisappear(animated: Bool) {
+        print("\(__FUNCTION__)")
+        NSNotificationCenter.defaultCenter().removeObserver(self,
+            name: UIDeviceOrientationDidChangeNotification,
+            object: nil)
+        UIDevice.currentDevice().endGeneratingDeviceOrientationNotifications()
+    }
+
     func onPayPause(btn: PlayButton) {
         if (btn.isPlaying) {
             self.audioPlayer.play()
+            self.imageArtwork.onResumeRotation()
         } else {
             self.audioPlayer.pause()
+            self.imageArtwork.onPauseRotation()
         }
     }
     func onPreviousNext(btn: UIButton) {
@@ -217,7 +254,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func onSetImage(url: String?) {
-        self.imageArtwork.onRotation()  /* Reset the rotation */
+        self.imageArtwork.onRestartRotation()  /* Restart the rotation */
 
         if (url != nil) {
             self.onGetCacheImage(url!, imgView: self.imageArtwork)

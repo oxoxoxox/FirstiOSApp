@@ -221,14 +221,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择频道" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NMp-6F-EF6">
-                                <rect key="frame" x="0.0" y="20" width="320" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择频道" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NMp-6F-EF6">
+                                <rect key="frame" x="32" y="20" width="288" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="P32-FU-VK5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="36" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="gim-pA-fhy">
-                                <rect key="frame" x="0.0" y="48" width="320" height="519.5"/>
+                                <rect key="frame" x="0.0" y="60" width="320" height="507.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="channelitem" id="Lu0-eX-aGu">
@@ -245,11 +248,25 @@
                                     <outlet property="delegate" destination="flQ-Bz-GTb" id="JcG-cX-AGh"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q73-QR-tAf" userLabel="BtnReturn">
+                                <rect key="frame" x="0.0" y="20" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="KDE-pZ-Zec"/>
+                                    <constraint firstAttribute="height" constant="32" id="Ths-NJ-jET"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="&lt;"/>
+                                <connections>
+                                    <action selector="onReturn:" destination="flQ-Bz-GTb" eventType="touchUpInside" id="B6i-Vx-BoM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Q73-QR-tAf" firstAttribute="leading" secondItem="dTE-DM-vKJ" secondAttribute="leadingMargin" constant="-16" id="3uq-EO-hNf"/>
+                            <constraint firstItem="NMp-6F-EF6" firstAttribute="leading" secondItem="Q73-QR-tAf" secondAttribute="trailing" id="4M9-m0-XrD"/>
+                            <constraint firstItem="Q73-QR-tAf" firstAttribute="top" secondItem="C1k-vz-jQc" secondAttribute="bottom" id="AaF-sX-jzn"/>
                             <constraint firstItem="NMp-6F-EF6" firstAttribute="top" secondItem="C1k-vz-jQc" secondAttribute="bottom" id="BdC-j1-HlY"/>
-                            <constraint firstItem="NMp-6F-EF6" firstAttribute="leading" secondItem="dTE-DM-vKJ" secondAttribute="leadingMargin" constant="-16" id="KRn-Ag-8J1"/>
                             <constraint firstItem="gim-pA-fhy" firstAttribute="leading" secondItem="dTE-DM-vKJ" secondAttribute="leadingMargin" constant="-16" id="OQT-Jd-D8n"/>
                             <constraint firstAttribute="trailingMargin" secondItem="NMp-6F-EF6" secondAttribute="trailing" constant="-16" id="e1S-p5-6lr"/>
                             <constraint firstItem="gim-pA-fhy" firstAttribute="top" secondItem="NMp-6F-EF6" secondAttribute="bottom" constant="8" id="esa-qn-KA2"/>
@@ -260,6 +277,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="btnReturn" destination="Q73-QR-tAf" id="MFM-hR-FJ1"/>
                         <outlet property="tblChannelList" destination="gim-pA-fhy" id="0Zl-Ax-4lT"/>
                     </connections>
                 </viewController>

@@ -15,6 +15,7 @@ protocol ChannelProtocol {
 class ChannelController: UIViewController, UITableViewDelegate {
 
     @IBOutlet weak var tblChannelList: UITableView!
+    @IBOutlet weak var btnReturn: UIButton!
 
     var delegate: ChannelProtocol?
     var channelData: [JSON] = []
@@ -23,7 +24,7 @@ class ChannelController: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        super.view.alpha = 0.8
+        super.view.alpha = 0.9
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,6 +50,12 @@ class ChannelController: UIViewController, UITableViewDelegate {
         // Exit current viewcontroller
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+
+    @IBAction func onReturn(sender: UIButton) {
+        // Exit current viewcontroller
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+
 
     /*
     // MARK: - Navigation
