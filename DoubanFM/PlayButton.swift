@@ -16,7 +16,7 @@ class PlayButton: UIButton {
     let imgPaused = UIImage(named: "pause")
 
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
 
         self.addTarget(self, action: "onClick", forControlEvents: UIControlEvents.TouchUpInside)
     }

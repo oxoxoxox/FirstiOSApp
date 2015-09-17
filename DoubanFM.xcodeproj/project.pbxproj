@@ -12,15 +12,28 @@
 		AA6099DD1B6DBA860068DBBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA6099DB1B6DBA860068DBBF /* Main.storyboard */; };
 		AA6099DF1B6DBA860068DBBF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA6099DE1B6DBA860068DBBF /* Images.xcassets */; };
 		AA6099E21B6DBA860068DBBF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA6099E01B6DBA860068DBBF /* LaunchScreen.xib */; };
-		AA6099EE1B6DBA870068DBBF /* DoubanFMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6099ED1B6DBA870068DBBF /* DoubanFMTests.swift */; };
 		AA6099F81B6DFA240068DBBF /* ImagePostEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6099F71B6DFA240068DBBF /* ImagePostEffect.swift */; };
 		AA6099FC1B6E0FF10068DBBF /* ChannelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6099FB1B6E0FF10068DBBF /* ChannelController.swift */; };
-		AA609A031B6E136E0068DBBF /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA609A011B6E136E0068DBBF /* Alamofire.swift */; };
 		AA609A041B6E136E0068DBBF /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA609A021B6E136E0068DBBF /* SwiftyJSON.swift */; };
 		AA609A081B6E13E00068DBBF /* HTTPController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA609A071B6E13E00068DBBF /* HTTPController.swift */; };
 		AAB7A5801B6E69F400592124 /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB7A57F1B6E69F400592124 /* PlayButton.swift */; };
 		AAB7A5821B6E752000592124 /* HRToast+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB7A5811B6E752000592124 /* HRToast+UIView.swift */; };
 		AAB7A5861B6E75D600592124 /* RepeatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB7A5851B6E75D600592124 /* RepeatButton.swift */; };
+		AAFB890D1BAAB0BF0016491A /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFB89001BAAB0BF0016491A /* Alamofire.swift */; settings = {ASSET_TAGS = (); }; };
+		AAFB890E1BAAB0BF0016491A /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFB89011BAAB0BF0016491A /* Download.swift */; settings = {ASSET_TAGS = (); }; };
+		AAFB890F1BAAB0BF0016491A /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFB89021BAAB0BF0016491A /* Error.swift */; settings = {ASSET_TAGS = (); }; };
+		AAFB89101BAAB0BF0016491A /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFB89031BAAB0BF0016491A /* Manager.swift */; settings = {ASSET_TAGS = (); }; };
+		AAFB89111BAAB0BF0016491A /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFB89041BAAB0BF0016491A /* MultipartFormData.swift */; settings = {ASSET_TAGS = (); }; };
+		AAFB89121BAAB0BF0016491A /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFB89051BAAB0BF0016491A /* ParameterEncoding.swift */; settings = {ASSET_TAGS = (); }; };
+		AAFB89131BAAB0BF0016491A /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFB89061BAAB0BF0016491A /* Request.swift */; settings = {ASSET_TAGS = (); }; };
+		AAFB89141BAAB0BF0016491A /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFB89071BAAB0BF0016491A /* ResponseSerialization.swift */; settings = {ASSET_TAGS = (); }; };
+		AAFB89151BAAB0BF0016491A /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFB89081BAAB0BF0016491A /* Result.swift */; settings = {ASSET_TAGS = (); }; };
+		AAFB89161BAAB0BF0016491A /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFB89091BAAB0BF0016491A /* ServerTrustPolicy.swift */; settings = {ASSET_TAGS = (); }; };
+		AAFB89171BAAB0BF0016491A /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFB890A1BAAB0BF0016491A /* Stream.swift */; settings = {ASSET_TAGS = (); }; };
+		AAFB89181BAAB0BF0016491A /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFB890B1BAAB0BF0016491A /* Upload.swift */; settings = {ASSET_TAGS = (); }; };
+		AAFB89191BAAB0BF0016491A /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFB890C1BAAB0BF0016491A /* Validation.swift */; settings = {ASSET_TAGS = (); }; };
+		AAFB891C1BAAF8FF0016491A /* DoubanFMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFB891B1BAAF8FF0016491A /* DoubanFMTests.swift */; settings = {ASSET_TAGS = (); }; };
+		AAFB891E1BAAF9080016491A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AAFB891D1BAAF9080016491A /* Info.plist */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +46,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		AAFB88FB1BAA9D0C0016491A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		AA6099D21B6DBA860068DBBF /* DoubanFM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoubanFM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA6099D61B6DBA860068DBBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -42,16 +68,28 @@
 		AA6099DE1B6DBA860068DBBF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		AA6099E11B6DBA860068DBBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		AA6099E71B6DBA870068DBBF /* DoubanFMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoubanFMTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AA6099EC1B6DBA870068DBBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AA6099ED1B6DBA870068DBBF /* DoubanFMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubanFMTests.swift; sourceTree = "<group>"; };
 		AA6099F71B6DFA240068DBBF /* ImagePostEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePostEffect.swift; sourceTree = "<group>"; };
 		AA6099FB1B6E0FF10068DBBF /* ChannelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChannelController.swift; path = ../ChannelController.swift; sourceTree = "<group>"; };
-		AA609A011B6E136E0068DBBF /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
 		AA609A021B6E136E0068DBBF /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		AA609A071B6E13E00068DBBF /* HTTPController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPController.swift; path = ../HTTPController.swift; sourceTree = "<group>"; };
 		AAB7A57F1B6E69F400592124 /* PlayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayButton.swift; sourceTree = "<group>"; };
 		AAB7A5811B6E752000592124 /* HRToast+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HRToast+UIView.swift"; sourceTree = "<group>"; };
 		AAB7A5851B6E75D600592124 /* RepeatButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepeatButton.swift; path = ../RepeatButton.swift; sourceTree = "<group>"; };
+		AAFB89001BAAB0BF0016491A /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Alamofire/Alamofire.swift; sourceTree = "<group>"; };
+		AAFB89011BAAB0BF0016491A /* Download.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Download.swift; path = Alamofire/Download.swift; sourceTree = "<group>"; };
+		AAFB89021BAAB0BF0016491A /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Error.swift; path = Alamofire/Error.swift; sourceTree = "<group>"; };
+		AAFB89031BAAB0BF0016491A /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Manager.swift; path = Alamofire/Manager.swift; sourceTree = "<group>"; };
+		AAFB89041BAAB0BF0016491A /* MultipartFormData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Alamofire/MultipartFormData.swift; sourceTree = "<group>"; };
+		AAFB89051BAAB0BF0016491A /* ParameterEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Alamofire/ParameterEncoding.swift; sourceTree = "<group>"; };
+		AAFB89061BAAB0BF0016491A /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Alamofire/Request.swift; sourceTree = "<group>"; };
+		AAFB89071BAAB0BF0016491A /* ResponseSerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Alamofire/ResponseSerialization.swift; sourceTree = "<group>"; };
+		AAFB89081BAAB0BF0016491A /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Alamofire/Result.swift; sourceTree = "<group>"; };
+		AAFB89091BAAB0BF0016491A /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = Alamofire/ServerTrustPolicy.swift; sourceTree = "<group>"; };
+		AAFB890A1BAAB0BF0016491A /* Stream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stream.swift; path = Alamofire/Stream.swift; sourceTree = "<group>"; };
+		AAFB890B1BAAB0BF0016491A /* Upload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Upload.swift; path = Alamofire/Upload.swift; sourceTree = "<group>"; };
+		AAFB890C1BAAB0BF0016491A /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Alamofire/Validation.swift; sourceTree = "<group>"; };
+		AAFB891B1BAAF8FF0016491A /* DoubanFMTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DoubanFMTests.swift; path = DoubanFMTests/DoubanFMTests.swift; sourceTree = "<group>"; };
+		AAFB891D1BAAF9080016491A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = DoubanFMTests/Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				AA6099D41B6DBA860068DBBF /* DoubanFM */,
-				AA6099EA1B6DBA870068DBBF /* DoubanFMTests */,
+				AAFB891A1BAAF8CB0016491A /* DoubanFMTests */,
 				AA6099D31B6DBA860068DBBF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -101,11 +139,23 @@
 				AA6099F71B6DFA240068DBBF /* ImagePostEffect.swift */,
 				AA6099D91B6DBA860068DBBF /* ViewController.swift */,
 				AA6099DB1B6DBA860068DBBF /* Main.storyboard */,
-				AA609A011B6E136E0068DBBF /* Alamofire.swift */,
-				AA609A021B6E136E0068DBBF /* SwiftyJSON.swift */,
-				AAB7A5811B6E752000592124 /* HRToast+UIView.swift */,
 				AA6099DE1B6DBA860068DBBF /* Images.xcassets */,
 				AA6099E01B6DBA860068DBBF /* LaunchScreen.xib */,
+				AA609A021B6E136E0068DBBF /* SwiftyJSON.swift */,
+				AAB7A5811B6E752000592124 /* HRToast+UIView.swift */,
+				AAFB89001BAAB0BF0016491A /* Alamofire.swift */,
+				AAFB89011BAAB0BF0016491A /* Download.swift */,
+				AAFB89021BAAB0BF0016491A /* Error.swift */,
+				AAFB89031BAAB0BF0016491A /* Manager.swift */,
+				AAFB89041BAAB0BF0016491A /* MultipartFormData.swift */,
+				AAFB89051BAAB0BF0016491A /* ParameterEncoding.swift */,
+				AAFB89061BAAB0BF0016491A /* Request.swift */,
+				AAFB89071BAAB0BF0016491A /* ResponseSerialization.swift */,
+				AAFB89081BAAB0BF0016491A /* Result.swift */,
+				AAFB89091BAAB0BF0016491A /* ServerTrustPolicy.swift */,
+				AAFB890A1BAAB0BF0016491A /* Stream.swift */,
+				AAFB890B1BAAB0BF0016491A /* Upload.swift */,
+				AAFB890C1BAAB0BF0016491A /* Validation.swift */,
 				AA6099D51B6DBA860068DBBF /* Supporting Files */,
 			);
 			path = DoubanFM;
@@ -119,19 +169,19 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		AA6099EA1B6DBA870068DBBF /* DoubanFMTests */ = {
+		AAFB891A1BAAF8CB0016491A /* DoubanFMTests */ = {
 			isa = PBXGroup;
 			children = (
-				AA6099ED1B6DBA870068DBBF /* DoubanFMTests.swift */,
-				AA6099EB1B6DBA870068DBBF /* Supporting Files */,
+				AAFB891B1BAAF8FF0016491A /* DoubanFMTests.swift */,
+				AAFB891F1BAAF91D0016491A /* Supporting Files */,
 			);
-			path = DoubanFMTests;
+			name = DoubanFMTests;
 			sourceTree = "<group>";
 		};
-		AA6099EB1B6DBA870068DBBF /* Supporting Files */ = {
+		AAFB891F1BAAF91D0016491A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				AA6099EC1B6DBA870068DBBF /* Info.plist */,
+				AAFB891D1BAAF9080016491A /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -146,6 +196,7 @@
 				AA6099CE1B6DBA860068DBBF /* Sources */,
 				AA6099CF1B6DBA860068DBBF /* Frameworks */,
 				AA6099D01B6DBA860068DBBF /* Resources */,
+				AAFB88FB1BAA9D0C0016491A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -180,11 +231,18 @@
 		AA6099CA1B6DBA860068DBBF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = JasonChiang;
 				TargetAttributes = {
 					AA6099D11B6DBA860068DBBF = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = YR7XH6S84F;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
 					};
 					AA6099E61B6DBA870068DBBF = {
 						CreatedOnToolsVersion = 6.4;
@@ -226,6 +284,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAFB891E1BAAF9080016491A /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,16 +295,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAFB89181BAAB0BF0016491A /* Upload.swift in Sources */,
+				AAFB89151BAAB0BF0016491A /* Result.swift in Sources */,
+				AAFB89191BAAB0BF0016491A /* Validation.swift in Sources */,
 				AA6099DA1B6DBA860068DBBF /* ViewController.swift in Sources */,
+				AAFB89131BAAB0BF0016491A /* Request.swift in Sources */,
+				AAFB89161BAAB0BF0016491A /* ServerTrustPolicy.swift in Sources */,
 				AA609A081B6E13E00068DBBF /* HTTPController.swift in Sources */,
-				AA609A031B6E136E0068DBBF /* Alamofire.swift in Sources */,
+				AAFB89111BAAB0BF0016491A /* MultipartFormData.swift in Sources */,
+				AAFB890E1BAAB0BF0016491A /* Download.swift in Sources */,
 				AA6099F81B6DFA240068DBBF /* ImagePostEffect.swift in Sources */,
+				AAFB890F1BAAB0BF0016491A /* Error.swift in Sources */,
 				AAB7A5861B6E75D600592124 /* RepeatButton.swift in Sources */,
 				AA609A041B6E136E0068DBBF /* SwiftyJSON.swift in Sources */,
+				AAFB89141BAAB0BF0016491A /* ResponseSerialization.swift in Sources */,
+				AAFB89101BAAB0BF0016491A /* Manager.swift in Sources */,
 				AAB7A5821B6E752000592124 /* HRToast+UIView.swift in Sources */,
+				AAFB890D1BAAB0BF0016491A /* Alamofire.swift in Sources */,
 				AAB7A5801B6E69F400592124 /* PlayButton.swift in Sources */,
+				AAFB89121BAAB0BF0016491A /* ParameterEncoding.swift in Sources */,
 				AA6099D81B6DBA860068DBBF /* AppDelegate.swift in Sources */,
 				AA6099FC1B6E0FF10068DBBF /* ChannelController.swift in Sources */,
+				AAFB89171BAAB0BF0016491A /* Stream.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,7 +324,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA6099EE1B6DBA870068DBBF /* DoubanFMTests.swift in Sources */,
+				AAFB891C1BAAF8FF0016491A /* DoubanFMTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,10 +375,11 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -325,7 +397,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -348,7 +420,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -363,6 +435,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -372,9 +445,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = DoubanFM/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jasonchiang-workshop.DoubanFM";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos9.0;
 			};
 			name = Debug;
 		};
@@ -382,9 +463,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = DoubanFM/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jasonchiang-workshop.DoubanFM";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos9.0;
 			};
 			name = Release;
 		};
@@ -392,6 +481,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -402,7 +492,9 @@
 				);
 				INFOPLIST_FILE = DoubanFMTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jasonchiang-workshop.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DoubanFM.app/DoubanFM";
 			};
 			name = Debug;
@@ -411,12 +503,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = DoubanFMTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jasonchiang-workshop.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DoubanFM.app/DoubanFM";
 			};

@@ -16,7 +16,7 @@ class RepeatButton: UIButton {
     let imgRepeatListMode:UIImage? = UIImage(named: "repeat")
 
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
 
         self.addTarget(self, action: "onClick:", forControlEvents: UIControlEvents.TouchUpInside)
     }

@@ -10,7 +10,7 @@ import UIKit
 
 class ImagePostEffect: UIImageView {
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
 
         self.clipsToBounds = true
         self.layer.cornerRadius = self.frame.size.width / 2
@@ -20,7 +20,7 @@ class ImagePostEffect: UIImageView {
     }
 
     func onRotation() {
-        var animation = CABasicAnimation(keyPath: "transform.rotation")
+        let animation = CABasicAnimation(keyPath: "transform.rotation")
 
         animation.fromValue = 0.0
         animation.toValue = M_PI * 2.0

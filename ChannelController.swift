@@ -32,11 +32,11 @@ class ChannelController: UIViewController, UITableViewDelegate {
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        println("channelData: \(self.channelData.count)")
+        print("channelData: \(self.channelData.count)")
         return self.channelData.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tblChannelList.dequeueReusableCellWithIdentifier("channelitem") as! UITableViewCell
+        let cell = tblChannelList.dequeueReusableCellWithIdentifier("channelitem")!
         let rowData:JSON = self.channelData[indexPath.row]
         cell.textLabel?.text = rowData["name"].string
         return cell

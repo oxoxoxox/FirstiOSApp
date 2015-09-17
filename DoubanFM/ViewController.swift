@@ -8,6 +8,7 @@
 
 import UIKit
 import MediaPlayer
+//import Alamofire
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, HttpProtocal, ChannelProtocol {
 
@@ -37,8 +38,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     func onBlurEffect(imageView: UIImageView?) {
         if (imageView != nil) {
-            var blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
-            var blurView = UIVisualEffectView(effect: blurEffect)
+            let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+            let blurView = UIVisualEffectView(effect: blurEffect)
             blurView.frame.size = CGSize(width: super.view.frame.width, height: super.view.frame.height)
 
             imageView!.addSubview(blurView)
@@ -92,7 +93,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             var newindex = 0
             let count = self.songData.count
             if (count > 1) {
-                do {
+                repeat {
                     newindex = random() % count
                 } while (newindex == self.playingIndex)
             }
@@ -130,7 +131,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 var newindex = 0
                 let count = self.songData.count
                 if (count > 1) {
-                    do {
+                    repeat {
                         newindex = random() % count
                     } while (newindex == self.playingIndex)
                 }
@@ -159,26 +160,26 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        var channelController: ChannelController = segue.destinationViewController as! ChannelController
+        let channelController: ChannelController = segue.destinationViewController as! ChannelController
         channelController.delegate = self
         channelController.channelData = self.channelData
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        println("songData.count: \(self.songData.count)")
+        print("songData.count: \(self.songData.count)")
         return self.songData.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = self.tblSongList.dequeueReusableCellWithIdentifier("songitem") as! UITableViewCell
+        let cell = self.tblSongList.dequeueReusableCellWithIdentifier("songitem")!
 
         // Clear the bg-color of every item in songlist table
         cell.backgroundColor = UIColor.clearColor()
 
         let rowData:JSON = self.songData[indexPath.row]
         let title = (rowData["title"].string == nil) ? String("Unknown") : rowData["title"].string!
-        let artist_album = ((rowData["artist"].string == nil) ? String("Unknown") : rowData["artist"].string!)
-                        + String(" - ")
-                        + ((rowData["albumtitle"].string == nil) ? String("Unknown") : rowData["albumtitle"].string!)
+        let artist = (rowData["artist"].string == nil) ? String("Unknown") : rowData["artist"].string!
+        let album = (rowData["albumtitle"].string == nil) ? String("Unknown") : rowData["albumtitle"].string!
+        let artist_album = artist + String(" - ") + album
         let artwork_url = (rowData["picture"].string == nil) ?
                                 String("http://douban.fm/favicon.ico") :
                                 rowData["picture"].string!
@@ -287,10 +288,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func onGetCacheImage(url: String, imgView: UIImageView) {
         let img: UIImage? = self.imageCache[url]
         if (img == nil) {
-            println("\(__FUNCTION__): image isn't cached, get it now!")
-            Alamofire.manager.request(Method.GET, url).response({ (_, _, data, error) -> Void in
+            print("\(__FUNCTION__): image isn't cached, get it now!")
+            request(.GET, url).response { _, _, data, error in
                 if (data != nil) {
-                    let new_img = UIImage(data: data as! NSData )
+                    let new_img = UIImage(data: data! )
                     imgView.image = new_img
 
                     // Cache this image data
@@ -298,17 +299,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 } else {
                     // TODO:
                 }
-            })
+            }
         } else {
-            println("\(__FUNCTION__): image is cached~")
+            print("\(__FUNCTION__): image is cached~")
             imgView.image = img
         }
     }
 
-    func didRecieveResults(results: AnyObject?) {
-//        println("RecieveResults:\(results)")
-        if (results != nil) {
-            var json = JSON(results!)
+    func didRecieveResults(results: Result<AnyObject>) {
+//        print("RecieveResults:\(results)\n<<<")
+//        print("RecieveResults.data:\(results.data)\n<<<")
+//        print("RecieveResults.value:\(results.value)\n<<<")
+        if (results.value != nil) {
+            var json = JSON(results.value!)
 
             if let channels = json["channels"].array {
                 self.channelData = channels
@@ -319,10 +322,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 self.isAutoFinishPlay = false
                 self.onSelectRow(0)
             } else {
-                println("No valid data!")
+                print("No valid data!")
             }
         } else {
-            println("Results is nil!")
+            print("Results is nil!")
         }
     }
 

@@ -7,19 +7,19 @@
 //
 
 import UIKit
+//import Alamofire
 
 class HTTPController: NSObject {
     var delegate: HttpProtocal?
 
     func onSearch(url: String) {
-        println("\(__FUNCTION__)")
-        Alamofire.manager.request(Method.GET, url).responseJSON(options: NSJSONReadingOptions.MutableContainers) {
-            (_, _, data, error) -> Void in
-                self.delegate?.didRecieveResults(data)
+        print("\(__FUNCTION__)")
+        request(.GET, url).responseJSON { _, _, data in
+            self.delegate?.didRecieveResults(data)
         }
     }
 }
 
 protocol HttpProtocal {
-    func didRecieveResults(results: AnyObject?)
+    func didRecieveResults(results: Result<AnyObject>)
 }
