@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import MediaPlayer
+import AVFoundation
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, HttpProtocal, ChannelProtocol {
 
@@ -31,7 +31,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var playingIndex: Int = 0
     var isAutoFinishPlay: Bool = true
 
-    var audioPlayer: MPMoviePlayerController = MPMoviePlayerController()
+    var audioPlayer: AVPlayer!
+    var playbackObserver: AnyObject?
     var progressTimer: NSTimer?
 
 
@@ -64,6 +65,84 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.onBlurEffect(imageBg)
     }
 
+    func onStart() {
+        self.playbackObserver = self.audioPlayer.addPeriodicTimeObserverForInterval(CMTimeMake(1, 3),
+            queue: dispatch_get_main_queue(), usingBlock: self.onUpdateProgress)
+
+        self.audioPlayer.currentItem?.addObserver(self,
+            forKeyPath: "status",
+            options: NSKeyValueObservingOptions.New,
+            context: &self.audioPlayer)
+        self.audioPlayer.currentItem?.addObserver(self,
+            forKeyPath: "loadedTimeRanges",
+            options: NSKeyValueObservingOptions.New,
+            context: &self.audioPlayer)
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: "onEos:",
+            name: AVPlayerItemDidPlayToEndTimeNotification,
+            object: self.audioPlayer.currentItem)
+    }
+
+    func onStop() {
+        if (nil != self.audioPlayer) {
+            if (nil != self.playbackObserver) {
+                self.audioPlayer.removeTimeObserver(self.playbackObserver!)
+                self.playbackObserver = nil
+
+                self.audioPlayer.currentItem?.removeObserver(self,
+                    forKeyPath: "status", context: &self.audioPlayer)
+                self.audioPlayer.currentItem?.removeObserver(self,
+                    forKeyPath: "loadedTimeRanges", context: &self.audioPlayer)
+                NSNotificationCenter.defaultCenter().removeObserver(self,
+                    name: AVPlayerItemDidPlayToEndTimeNotification, object: self.audioPlayer.currentItem)
+            }
+        }
+    }
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?,
+            change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        if (context == &self.audioPlayer) {
+            if (keyPath == "status" && nil != change) {
+                if let new_value = change![NSKeyValueChangeNewKey] as? NSNumber {
+                    let status = new_value.integerValue
+                    switch (status) {
+                    case AVPlayerStatus.Failed.rawValue:
+                        print("\(__FUNCTION__): status: AVPlayerStatus.Failed");
+                        break;
+                    case AVPlayerStatus.ReadyToPlay.rawValue:
+                        print("\(__FUNCTION__): status: AVPlayerStatus.ReadyToPlay");
+                        self.audioPlayer.play()
+                        self.btnPlayPause.onPlay()
+                        break;
+                    case AVPlayerStatus.Unknown.rawValue:
+                        print("\(__FUNCTION__): status: AVPlayerStatus.Unknown");
+                        break;
+                    default:
+                        print("\(__FUNCTION__): status: Invalid Value");
+                        break;
+                    }
+                } else {
+                    print("\(__FUNCTION__): status: nil");
+                }
+            }
+
+            if (keyPath == "loadedTimeRanges" && nil != change) {
+                if let new_value = change![NSKeyValueChangeNewKey] as? NSArray {
+                    if new_value.count > 0 {
+                        let range = new_value[0].CMTimeRangeValue
+                        print("\(__FUNCTION__): loadedTimeRanges: ",
+                            "start=\(CMTimeGetSeconds(range.start))",
+                            ", end=\(CMTimeGetSeconds(range.end))",
+                            ", duration=\(CMTimeGetSeconds(range.duration))")
+                    } else {
+                        print("\(__FUNCTION__): loadedTimeRanges: start=nil, end=nil, duration=nil")
+                    }
+                } else {
+                    print("\(__FUNCTION__): loadedTimeRanges: nil")
+                }
+            }
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -88,12 +167,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.btnRepeatMode.addTarget(self, action: "onRepeatMode:", forControlEvents: UIControlEvents.TouchUpInside)
         self.btnPrevious.addTarget(self, action: "onPreviousNext:", forControlEvents: UIControlEvents.TouchUpInside)
         self.btnNext.addTarget(self, action: "onPreviousNext:", forControlEvents: UIControlEvents.TouchUpInside)
-
-        NSNotificationCenter.defaultCenter().addObserver(
-            self,
-            selector: "onEos",
-            name: MPMoviePlayerPlaybackDidFinishNotification,
-            object: self.audioPlayer)
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -161,7 +234,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         self.view.makeToast(message: msg, duration: 0.5, position: "center")
     }
-    func onEos() {
+    func onEos(sender: NSNotification?) {
+        self.onStop()
+
         if (self.isAutoFinishPlay) {
             switch (self.btnRepeatMode.repeatMode) {
             case 1:
@@ -265,20 +340,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func onSetAudio(url: String?) {
-        self.audioPlayer.stop()
         self.progressTimer?.invalidate()
         self.progressTime.text = "00:00"
 
         if (url != nil) {
-            self.audioPlayer.contentURL = NSURL(string: url!)
-            self.audioPlayer.play()
-            self.btnPlayPause.onPlay()
-            self.progressTimer = NSTimer.scheduledTimerWithTimeInterval(
-                                            0.3,
-                                            target: self,
-                                            selector: "onUpdateProgress",
-                                            userInfo: nil,
-                                            repeats: true)
+            self.onStop()
+
+            let full_url = NSURL(string: url!)!
+            let playItem = AVPlayerItem(URL: full_url)
+
+            if (nil == self.audioPlayer || nil == self.audioPlayer.currentItem) {
+                self.audioPlayer = AVPlayer(playerItem: playItem)
+            } else {
+                self.audioPlayer.replaceCurrentItemWithPlayerItem(playItem)
+            }
+
+            self.onStart()
 
             self.isAutoFinishPlay = true
         } else {
@@ -286,8 +363,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
 
-    func onUpdateProgress() {
-        let ftime = self.audioPlayer.currentPlaybackTime
+    func onUpdateProgress(time: CMTime) {
+        if (nil == self.audioPlayer.currentItem) {
+            return
+        }
+
+        let ftime = CMTimeGetSeconds(self.audioPlayer.currentItem!.currentTime())
         if (ftime > 0) {
             let time = Int(ftime)
             let minutes = time / 60
@@ -306,7 +387,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 self.progressTime.text = "99:59"
             }
 
-            let fduration = self.audioPlayer.duration
+            let fduration = CMTimeGetSeconds(self.audioPlayer.currentItem!.duration)
             if (fduration > 0) {
                 self.progressBar.frame.size.width = super.view.frame.size.width * CGFloat(ftime/fduration)
                 if (self.progressBar.hidden) {
